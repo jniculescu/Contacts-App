@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {Contact} from "./contact/contact";
 import {MdDialog} from '@angular/material'
 import {ContactService} from "./contact/service/contact.service";
-import {ContactListItemComponent} from "./contact/contact-list/contact-list-item/contact-list-item.component";
+import {ContactDialogComponent} from "./contact/contact-dialog/contact-dialog.component";
 
 
 @Component({
@@ -22,23 +22,13 @@ export class AppComponent
     this.contacts = contactService.findContacts();
   }
 
-  addContact(contactService: ContactService, $mdDialog)
+  addContact()
   {
 
-
-    //this.dialog.open(ContactListItemComponent);
-    $mdDialog.show(
-      $mdDialog.alert()
-        .ok('ok')
-        .openFrom({
-        top: -50,
-        width: 30,
-        height: 80
-      })
-        .closeTo({
-          left: 1500
-        })
-    )
+    let dialogRef = this.dialog.open(ContactDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
     //contactService.saveContact();
   }
 

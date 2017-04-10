@@ -1,11 +1,9 @@
-
-<div >
-<app-contact-list [contacts]="contacts" >Loading...</app-contact-list>
+<div fxLayout="column">
+  <app-contact-list [contacts]="contacts" fxLayoutAlign="center center"></app-contact-list>
 </div>
 
-<div class="addContact">
-  <button md-fab (click)="addContact()">New</button>
-</div>
+<button class="add-button" md-fab (click)="addContact()">New</button>
+
 
 
 
