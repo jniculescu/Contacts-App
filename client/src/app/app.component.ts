@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import {Contact} from "./contact/contact";
+import {MdDialog} from '@angular/material'
+import {ContactService} from "./contact/service/contact.service";
+import {ContactListItemComponent} from "./contact/contact-list/contact-list-item/contact-list-item.component";
 
 
 @Component({
@@ -11,15 +14,36 @@ import {Contact} from "./contact/contact";
 export class AppComponent
 {
   contacts: Contact[];
-  selectedContact: Contact;
+  //selectedContact: Contact;
 
-  constructor(contactService: ContactService)
+
+  constructor(public dialog: MdDialog, contactService: ContactService)
   {
     this.contacts = contactService.findContacts();
   }
 
-  addContact()
+  addContact(contactService: ContactService, $mdDialog)
   {
-    console.log('button Works!');
+
+
+    //this.dialog.open(ContactListItemComponent);
+    $mdDialog.show(
+      $mdDialog.alert()
+        .ok('ok')
+        .openFrom({
+        top: -50,
+        width: 30,
+        height: 80
+      })
+        .closeTo({
+          left: 1500
+        })
+    )
+    //contactService.saveContact();
   }
+
+  /*contactSelected(contact: Contact)
+  {
+    this.selectedContact = contact;
+  }*/
 }

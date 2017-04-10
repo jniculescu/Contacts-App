@@ -1,3 +1,3 @@
-<p>
-  contact-list works!
-</p>
+<div *ngFor = "let contact of contacts" fxLayout="column" fxLayoutAlign="space-between center">
+<app-contact-list-item [contact]="contact" ></app-contact-list-item>
+</div>
