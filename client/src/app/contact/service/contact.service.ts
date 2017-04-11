@@ -6,6 +6,8 @@ export class ContactService {
 
   public localStorageContactsKey = 'ca-contacts';
 
+  private contacts: Contact[] = [];
+
   constructor() {
 
     if(!localStorage.getItem(this.localStorageContactsKey))
@@ -13,11 +15,12 @@ export class ContactService {
       localStorage.setItem(this.localStorageContactsKey, JSON.stringify([]));
     }
 
+    this.contacts = JSON.parse(localStorage.getItem((this.localStorageContactsKey)));
 
   }
 
   public findContacts(): Contact[] {
-    return this.readLocalStorageContacts();
+    return this.contacts;
   }
 
   public readLocalStorageContacts() {
@@ -31,23 +34,20 @@ export class ContactService {
   }
 
   public saveContact(contact) {
-    var contacts = this.readLocalStorageContacts();
-    contacts.push(contact);
-    this.writeLocalStorageContacts(contacts);
+    this.contacts.push(contact);
+    this.writeLocalStorageContacts(this.contacts);
   }
 
   public saveContactEdit(contact) {
-    var contacts1 = this.readLocalStorageContacts();
-    let index = contacts1.findIndex(c => c.id == contact.id);
-    contacts1[index] = contact;
-    this.writeLocalStorageContacts(contacts1);
+    let index = this.contacts.findIndex(c => c.id == contact.id);
+    this.contacts[index] = contact;
+    this.writeLocalStorageContacts(this.contacts);
   }
 
   public deleteContact(contact){
-    let contacts2 = this.readLocalStorageContacts();
-    let index = contacts2.findIndex(c => c.id == contact.id);
-    contacts2.splice(index, 1);
-    this.writeLocalStorageContacts(contacts2);
+    let index = this.contacts.findIndex(c => c.id == contact.id);
+    this.contacts.splice(index, 1);
+    this.writeLocalStorageContacts(this.contacts);
   }
 
 }
