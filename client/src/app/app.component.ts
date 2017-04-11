@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Contact} from "./contact/contact";
 import {MdDialog} from '@angular/material'
 import {ContactService} from "./contact/service/contact.service";
@@ -11,29 +11,27 @@ import {ContactDialogComponent} from "./contact/contact-dialog/contact-dialog.co
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent
-{
+export class AppComponent {
   contacts: Contact[];
-  //selectedContact: Contact;
 
 
-  constructor(public dialog: MdDialog, contactService: ContactService)
-  {
+  constructor(public dialog: MdDialog, private contactService: ContactService) {
     this.contacts = contactService.findContacts();
   }
 
-  addContact()
-  {
+  addContact() {
 
     let dialogRef = this.dialog.open(ContactDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      if(result){
+        this.contactService.saveContact(result)
+      }
     });
-    //contactService.saveContact();
   }
 
-  /*contactSelected(contact: Contact)
-  {
-    this.selectedContact = contact;
-  }*/
+  deleteContact(contact: Contact) {
+    this.contactService.deleteContact(contact);
+  }
+
+
 }

@@ -4,45 +4,43 @@ import {Contact} from "../contact";
 @Injectable()
 export class ContactService {
 
-  private contacts: Contact[];
+  public localStorageContactsKey = 'ca-contacts';
 
   constructor() {
 
-
-    this.contacts = [
-      new Contact(1, 'jani', 'niculescu', '0400535343', 'Piiluvankatu 27', 'Lappeenranta')
-    ];
-
-
-    var localStorageContactsKey = 'ca-contacts';
-    if(!localStorage.getItem(localStorageContactsKey))
+    if(!localStorage.getItem(this.localStorageContactsKey))
     {
-      localStorage.setItem(localStorageContactsKey, JSON.stringify([]));
+      localStorage.setItem(this.localStorageContactsKey, JSON.stringify([]));
     }
 
-    function readLocalStorageContacts() {
-      var data = localStorage.getItem(localStorageContactsKey);
-      return JSON.parse(data);
-    }
-
-    function writeLocalStorageContacts(contacts) {
-      contacts = JSON.stringify(contacts);
-      return localStorage.setItem(localStorageContactsKey, contacts);
-    }
-
-  function saveContact(contact)
-    {
-      var contacts1 = readLocalStorageContacts();
-      contacts1.push(contact);
-      writeLocalStorageContacts(contacts1);
-    }
 
   }
 
   public findContacts(): Contact[] {
-    return this.contacts;
+    return this.readLocalStorageContacts();
   }
 
+  public readLocalStorageContacts() {
+    var data = localStorage.getItem(this.localStorageContactsKey);
+    return JSON.parse(data);
+  }
 
+  public writeLocalStorageContacts(contacts) {
+    contacts = JSON.stringify(contacts);
+    return localStorage.setItem(this.localStorageContactsKey, contacts);
+  }
+
+  public saveContact(contact) {
+    var contacts1 = this.readLocalStorageContacts();
+    contacts1.push(contact);
+    this.writeLocalStorageContacts(contacts1);
+  }
+
+  public deleteContact(contact){
+    let contacts2 = this.readLocalStorageContacts();
+    let index = contacts2.findIndex(c => c.id == contact.id);
+    contacts2.splice(index, 1);
+    this.writeLocalStorageContacts(contacts2);
+  }
 
 }

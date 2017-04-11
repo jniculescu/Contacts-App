@@ -1,19 +1,19 @@
 export class Contact
 {
-  id: number;
   firstName: string;
   lastName: string;
   phone: string;
   address: string;
   city: string;
+  id: number;
 
-  constructor(id?: number, firstName?: string, lastName?: string, phone?: string, address?: string, city?: string)
+  constructor(firstName?: string, lastName?: string, phone?: string, address?: string, city?: string, id?: number)
   {
-    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.phone = phone;
     this.address = address;
     this.city = city;
+    this.id = id;
   }
 }

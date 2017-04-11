@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, EventEmitter} from '@angular/core';
 import {Contact} from "../../contact";
 
 
@@ -9,7 +9,10 @@ import {Contact} from "../../contact";
 })
 export class ContactListItemComponent implements OnInit {
 
+
   @Input() contact: Contact;
+  @Input() edit: EventEmitter<Contact>;
+  @Input() delete: EventEmitter<Contact>;
 
   constructor()
   {
@@ -19,4 +22,12 @@ export class ContactListItemComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  deleteContact(){
+    this.delete.emit(this.contact);
+  }
+
+  editContact(){
+    this.edit.emit(this.contact);
+  }
 }
