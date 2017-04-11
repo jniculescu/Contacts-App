@@ -32,6 +32,9 @@ export class AppComponent {
   editContact(contact: Contact){
     this.dialogService.editContactDialog(contact);
   }
+  showContactMap(contact: Contact){
+    this.dialogService.contactMapDialog(contact);
+  }
 
 
 }

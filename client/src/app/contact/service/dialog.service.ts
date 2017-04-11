@@ -4,6 +4,7 @@ import {Contact} from "../contact";
 import {ContactDialogComponent} from "../contact-dialog/contact-dialog.component";
 import {EditContactDialogComponent} from "../edit-contact-dialog/edit-contact-dialog.component";
 import {ContactService} from "./contact.service";
+import {ContactMapDialogComponent} from "../contact-map-dialog/contact-map-dialog.component";
 
 @Injectable()
 export class DialogService {
@@ -35,12 +36,12 @@ export class DialogService {
     });
   }
 
-  /*
-   public mapDialog(address: string){
-   let dialogRef = this.dialog.open(MapDialogComponent);
-   dialogRef.componentInstance.address = address;
-   return dialogRef.afterClosed();
-   }
-   */
+
+  public contactMapDialog(contact?: Contact) {
+    let dialogRef = this.dialog.open(ContactMapDialogComponent);
+    dialogRef.componentInstance.contact = contact;
+    return dialogRef.afterClosed();
+  }
+
 
 }
