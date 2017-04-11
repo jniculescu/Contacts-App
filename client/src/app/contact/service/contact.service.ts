@@ -31,8 +31,15 @@ export class ContactService {
   }
 
   public saveContact(contact) {
+    var contacts = this.readLocalStorageContacts();
+    contacts.push(contact);
+    this.writeLocalStorageContacts(contacts);
+  }
+
+  public saveContactEdit(contact) {
     var contacts1 = this.readLocalStorageContacts();
-    contacts1.push(contact);
+    let index = contacts1.findIndex(c => c.id == contact.id);
+    contacts1[index] = contact;
     this.writeLocalStorageContacts(contacts1);
   }
 

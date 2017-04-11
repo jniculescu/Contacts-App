@@ -12,6 +12,7 @@ import { ContactListComponent } from './contact/contact-list/contact-list/contac
 import { ContactListItemComponent } from './contact/contact-list/contact-list-item/contact-list-item.component';
 import { ContactDialogComponent } from './contact/contact-dialog/contact-dialog.component';
 import { EditContactDialogComponent } from './contact/edit-contact-dialog/edit-contact-dialog.component';
+import {DialogService} from "./contact/service/dialog.service";
 
 @NgModule({
   declarations: [
@@ -28,8 +29,8 @@ import { EditContactDialogComponent } from './contact/edit-contact-dialog/edit-c
     MaterialModule,
     FlexLayoutModule
   ],
-  providers: [ContactService],
+  providers: [ContactService, DialogService],
   bootstrap: [AppComponent],
-  entryComponents: [ContactDialogComponent]
+  entryComponents: [ContactDialogComponent, EditContactDialogComponent]
 })
 export class AppModule {}

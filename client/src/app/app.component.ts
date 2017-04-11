@@ -3,6 +3,7 @@ import {Contact} from "./contact/contact";
 import {MdDialog} from '@angular/material'
 import {ContactService} from "./contact/service/contact.service";
 import {ContactDialogComponent} from "./contact/contact-dialog/contact-dialog.component";
+import {DialogService} from "./contact/service/dialog.service";
 
 
 @Component({
@@ -13,24 +14,23 @@ import {ContactDialogComponent} from "./contact/contact-dialog/contact-dialog.co
 
 export class AppComponent {
   contacts: Contact[];
+  private dialogService: any;
 
-
-  constructor(public dialog: MdDialog, private contactService: ContactService) {
+  constructor(private contactService: ContactService, dialogService: DialogService) {
     this.contacts = contactService.findContacts();
+    this.dialogService = dialogService;
   }
 
   addContact() {
-
-    let dialogRef = this.dialog.open(ContactDialogComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this.contactService.saveContact(result)
-      }
-    });
+    this.dialogService.contactDialog();
   }
 
   deleteContact(contact: Contact) {
     this.contactService.deleteContact(contact);
+  }
+
+  editContact(contact: Contact){
+    this.dialogService.editContactDialog(contact);
   }
 
 
