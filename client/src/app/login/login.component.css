@@ -1,7 +1,17 @@
-.card-head{
+.login-card{
+position: fixed;
+  top: 20%;
+  right: 43%;
+}
+
+.card-head {
   background: steelblue;
   padding-top: 5px;
   padding-bottom: 2px;
   padding-left: 0px;
   padding-right: 0px;
+}
+
+#card{
+  background: darkgrey;
 }

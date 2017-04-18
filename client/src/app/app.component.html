@@ -1,9 +1,1 @@
-<div fxLayout="column" fxLayoutAlign="start center">
-  <app-contact-list [contacts]="contacts"  (editContact)="editContact($event)" (deleteContact)="deleteContact($event)" (showContactMap)="showContactMap($event)"></app-contact-list>
-</div>
-
-<button class="add-button" md-fab (click)="addContact()">New</button>
-
-
-
-
+<router-outlet></router-outlet>
