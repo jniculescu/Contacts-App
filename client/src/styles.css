@@ -6,3 +6,16 @@ html, body{
   margin: 0;
   background: burlywood;
 }
+
+.mat-sidenav-content{
+  overflow: hidden !important;
+}
+
+.mat-sidenav-container {
+  background-color: initial;
+}
+
+.mat-toolbar {
+  position: fixed;
+  z-index: 9999;
+}

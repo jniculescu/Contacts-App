@@ -1,1 +1,44 @@
-<router-outlet></router-outlet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
+<!--<md-sidenav-container class="ca-sidenav-container">
+  <md-sidenav #sidenav mode="side" opened="true">
+    <md-toolbar color="primary">
+      <span>Menu</span>
+    </md-toolbar>
+    blaa blaa
+  </md-sidenav>
+
+  <md-toolbar color="primary">
+    <span style="flex:1"><button md-button (click)="sidenav.toggle()"><md-icon>menu</md-icon></button></span>
+    <span style="flex:99">Contacts App</span>
+  </md-toolbar>
+
+  <router-outlet></router-outlet>
+
+</md-sidenav-container>-->
+
+<md-sidenav-container class="ca-sidenav-container">
+  <md-sidenav class="ca-sidenav" name="sidenav" #sidenav mode="side" opened="false">
+    <div fxLayout="row" class="ca-sidenav-toolbar">
+      <div fxLayout="column" fxLayoutAlign="center start">
+        <md-icon style="width: 80px; height: 80px; font-size: 80px">account_circle</md-icon>
+        <div style="font-size: 16px">Sami Anttonen</div>
+        <div style="font-size: 12px">anttonen.sami@gmail.com</div>
+      </div>
+    </div>
+    <div class="ca-sidenav-content">MOI</div>
+  </md-sidenav>
+  <md-toolbar class="mat-elevation-z5" color="primary">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <button md-icon-button>
+        <md-icon>menu</md-icon>
+      </button>
+      Title
+    </div>
+  </md-toolbar>
+  <div class="ca-app-container">
+    <div class="ca-toolbar-placeholder-fix"></div>
+    <router-outlet></router-outlet>
+  </div>
+</md-sidenav-container>
