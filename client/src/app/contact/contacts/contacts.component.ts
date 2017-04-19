@@ -13,21 +13,34 @@ export class ContactsComponent {
   contacts: Contact[];
   private dialogService: any;
 
-  constructor(private contactService: ContactService, dialogService: DialogService, private router: Router) {
+  constructor(public contactService: ContactService, dialogService: DialogService, private router: Router) {
     this.contacts = contactService.findContacts();
     this.dialogService = dialogService;
   }
 
   addContact() {
-    this.dialogService.contactDialog();
+    this.dialogService.contactDialog().subscribe(result => {
+      if (result) {
+        this.contactService.saveContact(result);
+        this.contacts = this.contactService.findContacts();
+      }
+    });
   }
 
   deleteContact(contact: Contact) {
     this.contactService.deleteContact(contact);
+    this.contacts = this.contactService.findContacts();
   }
 
   editContact(contact: Contact) {
-    this.dialogService.editContactDialog(contact);
+    this.dialogService.editContactDialog(contact).subscribe(result => {
+      if (result) {
+        console.log(this.contacts);
+        this.contactService.saveContactEdit(result);
+        this.contacts = this.contactService.findContacts();
+        console.log(this.contacts);
+      }
+    });
   }
 
   showContactMap(contact: Contact) {

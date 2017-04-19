@@ -3,7 +3,8 @@ import {Contact} from "../contact";
 import * as _ from 'lodash';
 
 @Pipe({
-  name: 'contactAddress'
+  name: 'contactAddress',
+  pure: true
 })
 export class ContactAddressPipe implements PipeTransform {
 

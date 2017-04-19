@@ -20,7 +20,7 @@ export class ContactService {
   }
 
   public findContacts(): Contact[] {
-    return this.contacts;
+    return this.readLocalStorageContacts();
   }
 
   public readLocalStorageContacts() {
