@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DomSanitizer} from "@angular/platform-browser";
 import {Contact} from "../contact";
 import {MdDialogRef} from "@angular/material";
@@ -14,17 +14,18 @@ export class ContactMapDialogComponent implements OnInit {
   target: string;
   private apiKey: string = 'AIzaSyCZ8xGhnEJWGDm9IrVRvaVKr9TEE6xLMJw';
 
-  constructor(public sanitizer: DomSanitizer, public dialogRef: MdDialogRef<ContactMapDialogComponent>) { }
+  constructor(public sanitizer: DomSanitizer, public dialogRef: MdDialogRef<ContactMapDialogComponent>) {
+  }
 
   ngOnInit() {
 
   }
 
-  public close(){
+  public close() {
     this.dialogRef.close();
   }
 
-  mapUrl(){
+  mapUrl() {
     this.target = this.contact.address + ',' + this.contact.city;
     return this.sanitizer.bypassSecurityTrustResourceUrl('http://www.google.com/maps/embed/v1/place?q=' + this.target + '&key=' + this.apiKey);
   }

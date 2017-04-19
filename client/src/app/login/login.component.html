@@ -1,21 +1,21 @@
 <div class="login-card" fxLayout="column" fxLayoutAlign="start center">
-<md-card class="ca-card">
-  <div md-card-image class="card-head">
-    <md-card-title>ContactsApp Login</md-card-title>
-  </div>
-  <div class="card-content">
+  <md-card class="ca-card">
+    <div md-card-image class="card-head">
+      <md-card-title>ContactsApp Login</md-card-title>
+    </div>
+    <div class="card-content">
 
-    <p>
-      UserName:<br>
-      <input [(ngModel)]="userName" type="text" name="userName">
-    </p>
-    <p>
-      Password:<br>
-      <input [(ngModel)]="password" type="text" name="passWord">
-    </p>
-    <md-card-actions>
-      <button md-raised-button (click)="navigateToContacts()">Login</button>
-    </md-card-actions>
-  </div>
-</md-card>
+      <p>
+        UserName:<br>
+        <input [(ngModel)]="userName" type="text" name="userName">
+      </p>
+      <p>
+        Password:<br>
+        <input [(ngModel)]="password" type="text" name="passWord">
+      </p>
+      <md-card-actions>
+        <button md-raised-button (click)="navigateToContacts()">Login</button>
+      </md-card-actions>
+    </div>
+  </md-card>
 </div>

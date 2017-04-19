@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {Contact} from "../../contact";
 import {EditContactDialogComponent} from "../../edit-contact-dialog/edit-contact-dialog.component";
 
@@ -14,8 +14,7 @@ export class ContactListComponent implements OnInit {
   @Output() deleteContact: EventEmitter<Contact>;
   @Output() showContactMap: EventEmitter<Contact>;
 
-  constructor()
-  {
+  constructor() {
     this.editContact = new EventEmitter();
     this.deleteContact = new EventEmitter();
     this.showContactMap = new EventEmitter();

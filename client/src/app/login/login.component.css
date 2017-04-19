@@ -1,5 +1,5 @@
-.login-card{
-position: fixed;
+.login-card {
+  position: fixed;
   top: 20%;
   right: 43%;
 }
@@ -12,6 +12,6 @@ position: fixed;
   padding-right: 0px;
 }
 
-.ca-card{
+.ca-card {
   background: darkgrey;
 }

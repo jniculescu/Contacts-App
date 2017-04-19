@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MdDialogRef} from '@angular/material';
 import {Contact} from "../contact";
 
@@ -22,7 +22,8 @@ export class EditContactDialogComponent implements OnInit {
   saveEdit() {
     this.dialogRef.close(this.contact);
   }
-  cancelEdit(){
+
+  cancelEdit() {
     this.dialogRef.close();
   }
 }

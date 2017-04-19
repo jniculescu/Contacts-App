@@ -15,8 +15,7 @@ export class ContactListItemComponent implements OnInit {
   @Input() delete: EventEmitter<Contact>;
   @Input() map: EventEmitter<Contact>;
 
-  constructor()
-  {
+  constructor() {
 
   }
 
@@ -24,15 +23,15 @@ export class ContactListItemComponent implements OnInit {
   }
 
 
-  deleteContact(){
+  deleteContact() {
     this.delete.emit(this.contact);
   }
 
-  editContact(){
+  editContact() {
     this.edit.emit(this.contact);
   }
 
-  showContactMap(){
+  showContactMap() {
     this.map.emit(this.contact);
   }
 

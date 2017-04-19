@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -10,12 +10,14 @@ export class LoginComponent implements OnInit {
 
   userName;
   password;
-  constructor(private router: Router) { }
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
-  navigateToContacts(){
+  navigateToContacts() {
     this.router.navigate(['/contacts']);
   }
 }

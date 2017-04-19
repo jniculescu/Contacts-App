@@ -1,15 +1,16 @@
 <md-card>
-<div md-card-image class="card-head">
-  <md-card-title>Contact</md-card-title>
-</div>
-<md-card-content>
-  {{contact.firstName}} <br> {{contact.lastName}} <br> {{contact.phone}} <br> {{contact.address}} <br> {{contact.city}} <br> {{contact | contactAddress}}
-</md-card-content>
-<div class="card-content">
-<md-card-actions>
-  <button md-raised-button (click)="deleteContact()">Del</button>
-  <button md-raised-button (click)="editContact()">Edit</button>
-  <button md-raised-button (click)="showContactMap()">Map</button>
-</md-card-actions>
-</div>
+  <div md-card-image class="card-head">
+    <md-card-title>Contact</md-card-title>
+  </div>
+  <md-card-content>
+    {{contact.firstName}} <br> {{contact.lastName}} <br> {{contact.phone}} <br> {{contact.address}} <br>
+    {{contact.city}} <br> {{contact | contactAddress}}
+  </md-card-content>
+  <div class="card-content">
+    <md-card-actions>
+      <button md-raised-button (click)="deleteContact()">Del</button>
+      <button md-raised-button (click)="editContact()">Edit</button>
+      <button md-raised-button (click)="showContactMap()">Map</button>
+    </md-card-actions>
+  </div>
 </md-card>

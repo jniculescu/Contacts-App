@@ -5,7 +5,6 @@ import {Contact} from "../contact";
 import {ContactService} from "../service/contact.service";
 
 
-
 @Component({
   selector: 'app-contact-dialog',
   templateUrl: './contact-dialog.component.html',
@@ -17,14 +16,13 @@ export class ContactDialogComponent implements OnInit {
   private contactService: any;
 
 
-
   constructor(public dialogRef: MdDialogRef<ContactDialogComponent>, contactService: ContactService) {
     this.contactService = contactService;
   }
 
 
   ngOnInit() {
-    if(!this.contact){
+    if (!this.contact) {
       this.contact = new Contact();
     }
   }
@@ -34,7 +32,8 @@ export class ContactDialogComponent implements OnInit {
     this.contact.id = contactsLen.length + 1;
     this.dialogRef.close(this.contact);
   }
-  cancelAdd(){
+
+  cancelAdd() {
     this.dialogRef.close();
   }
 
