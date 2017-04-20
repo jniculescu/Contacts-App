@@ -1,0 +1,9 @@
+D:\contacts-app\server\Contacts App API\Contacts App API\bin\Debug\netcoreapp1.1\Contacts App API.deps.json
+D:\contacts-app\server\Contacts App API\Contacts App API\bin\Debug\netcoreapp1.1\Contacts App API.runtimeconfig.json
+D:\contacts-app\server\Contacts App API\Contacts App API\bin\Debug\netcoreapp1.1\Contacts App API.runtimeconfig.dev.json
+D:\contacts-app\server\Contacts App API\Contacts App API\bin\Debug\netcoreapp1.1\Contacts App API.dll
+D:\contacts-app\server\Contacts App API\Contacts App API\bin\Debug\netcoreapp1.1\Contacts App API.pdb
+D:\contacts-app\server\Contacts App API\Contacts App API\obj\Debug\netcoreapp1.1\Contacts App API.csprojResolveAssemblyReference.cache
+D:\contacts-app\server\Contacts App API\Contacts App API\obj\Debug\netcoreapp1.1\Contacts App API.AssemblyInfo.cs
+D:\contacts-app\server\Contacts App API\Contacts App API\obj\Debug\netcoreapp1.1\Contacts App API.dll
+D:\contacts-app\server\Contacts App API\Contacts App API\obj\Debug\netcoreapp1.1\Contacts App API.pdb

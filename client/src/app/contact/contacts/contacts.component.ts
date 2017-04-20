@@ -14,14 +14,20 @@ export class ContactsComponent {
   private dialogService: any;
 
   constructor(public contactService: ContactService, dialogService: DialogService, private router: Router) {
-    this.contacts = contactService.findContacts();
+    contactService.findContacts().subscribe(contacts => {
+      this.contacts = contacts;
+    });
     this.dialogService = dialogService;
   }
-
+  /*    contactService.findContacts().subscribe(contacts => {
+   this.contacts = contacts;
+   });*/
   addContact() {
     this.dialogService.contactDialog().subscribe(result => {
       if (result) {
-        this.contactService.saveContact(result);
+        this.contactService.saveContact(result).subscribe(contacts => {
+          this.contacts = contacts;
+        });
         this.contacts = this.contactService.findContacts();
       }
     });

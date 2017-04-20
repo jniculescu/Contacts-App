@@ -19,6 +19,8 @@ import { ContactAddressPipe } from './contact/pipes/contact-address.pipe';
 import {RouterModule} from "@angular/router";
 import { ContactsComponent } from './contact/contacts/contacts.component';
 import {LoginComponent} from "./login/login.component";
+import {ContactApiService} from "./contact/service/contact-api.service";
+import {ContactLocalStorageService} from "./contact/service/contact-localstorage.service";
 
 const routes = [
   {
@@ -57,8 +59,8 @@ const routes = [
     FlexLayoutModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ContactService, DialogService],
+  providers: [ContactService, DialogService, ContactLocalStorageService],
   bootstrap: [AppComponent],
-  entryComponents: [ContactDialogComponent, EditContactDialogComponent, ContactMapDialogComponent]
+  entryComponents: [ContactDialogComponent, EditContactDialogComponent, ContactMapDialogComponent, ContactApiService]
 })
 export class AppModule {}
