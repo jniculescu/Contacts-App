@@ -17,16 +17,15 @@ export class ContactService {
   }
 
   public findContacts() {
-    return this.contactApiService.findContacts();
+    return this.contactStorage.findContacts();
   }
 
   public saveContact(contact: Contact) {
-    return this.contactApiService.saveContact(contact);
+    return this.contactStorage.saveContact(contact);
   }
 
   public deleteContact(contact: Contact){
-    return this.contactApiService.deleteContact(contact);
+    return this.contactStorage.deleteContact(contact);
   }
 
 }
-//need to de local storage service et voi erottaa kumpaa käyttää ja sen pitää palauttaa myös observable objekteja

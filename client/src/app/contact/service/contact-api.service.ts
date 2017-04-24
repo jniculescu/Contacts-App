@@ -16,7 +16,7 @@ export class ContactApiService implements ContactStorage{
   }
 
   saveContact(contact: Contact){
-    return contact.id ? this.createContact(contact) : this.updateContact(contact)
+    return contact.id ? this.updateContact(contact) : this.createContact(contact);
   }
 
   createContact(contact: Contact){

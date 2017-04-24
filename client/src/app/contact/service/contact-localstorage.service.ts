@@ -15,14 +15,7 @@ export class ContactLocalStorageService implements ContactStorage {
     {
       localStorage.setItem(this.localStorageContactsKey, JSON.stringify([]));
     }
-
     this.contacts = JSON.parse(localStorage.getItem((this.localStorageContactsKey)));
-
-  }
-
-  public findContacts() {
-    let contacts = this.readLocalStorageContacts();
-    return Observable.of(this.contacts);
   }
 
   public readLocalStorageContacts() {
@@ -35,15 +28,26 @@ export class ContactLocalStorageService implements ContactStorage {
     return localStorage.setItem(this.localStorageContactsKey, contacts);
   }
 
+  public findContacts() {
+    this.contacts = this.readLocalStorageContacts();
+    return Observable.of(this.contacts);
+  }
+
   public saveContact(contact: Contact) {
-     this.contacts.push(contact);
-     this.writeLocalStorageContacts(this.contacts);
+    return contact.id ? this.saveContactEdit(contact) : this.createContact(contact);
+  }
+
+  public createContact(contact: Contact){
+    this.contacts.push(contact);
+    this.writeLocalStorageContacts(this.contacts);
+    return Observable.of([]);
   }
 
   public saveContactEdit(contact: Contact) {
     let index = this.contacts.findIndex(c => c.id == contact.id);
     this.contacts[index] = contact;
     this.writeLocalStorageContacts(this.contacts);
+    return Observable.of([]);
   }
 
   public deleteContact(contact: Contact){

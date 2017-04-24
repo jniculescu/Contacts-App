@@ -15,5 +15,4 @@ export class ContactAddressPipe implements PipeTransform {
 
     return addressParts.join(', ');
   }
-
 }

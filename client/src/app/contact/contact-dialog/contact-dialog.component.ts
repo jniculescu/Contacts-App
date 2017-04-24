@@ -3,6 +3,7 @@ import {MdDialogRef} from '@angular/material';
 
 import {Contact} from "../contact";
 import {ContactService} from "../service/contact.service";
+import {isNullOrUndefined} from "util";
 
 
 @Component({
@@ -28,8 +29,6 @@ export class ContactDialogComponent implements OnInit {
   }
 
   saveContact() {
-    var contactsLen = this.contactService.readLocalStorageContacts();
-    this.contact.id = contactsLen.length + 1;
     this.dialogRef.close(this.contact);
   }
 

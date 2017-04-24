@@ -14,6 +14,8 @@ namespace Contacts_App_API.Controllers
 
 		private readonly IContactService _contactService;
 
+		public List<Contact> _contacts;
+
 		public ContactsController(IContactService contactService)
 		{
 			_contactService = contactService;
@@ -31,27 +33,30 @@ namespace Contacts_App_API.Controllers
         public Contact Get(int id)
         {
             return _contactService.FindContactById(id);
-        }
+		}
 
 		// POST api/contacts
 		[HttpPost]
-        public void Post([FromBody]Contact contact)
+        public List<Contact> Post([FromBody]Contact contact)
         {
 			_contactService.CreateContact(contact);
+			return _contacts; ;
 		}
 
 		// PUT api/contacts/1
 		[HttpPut("{id}")]
-        public void Put(int id, [FromBody]Contact contact)
+        public List<Contact> Put(int id, [FromBody]Contact contact)
         {
 			_contactService.UpdateContact(id, contact);
-        }
+			return _contacts;
+		}
 
 		// DELETE api/contacts/1
 		[HttpDelete("{id}")]
-        public void Delete(int id)
+        public List<Contact> Delete(int id)
         {
 			_contactService.DeleteContact(id);
-        }
+			return _contacts;
+		}
     }
 }

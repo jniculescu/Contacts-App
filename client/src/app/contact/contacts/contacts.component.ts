@@ -10,6 +10,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./contacts.component.css']
 })
 export class ContactsComponent {
+
+
   contacts: Contact[];
   private dialogService: any;
 
@@ -19,34 +21,36 @@ export class ContactsComponent {
     });
     this.dialogService = dialogService;
   }
-  /*    contactService.findContacts().subscribe(contacts => {
-   this.contacts = contacts;
-   });*/
+
   addContact() {
     this.dialogService.contactDialog().subscribe(result => {
       if (result) {
-        this.contactService.saveContact(result).subscribe(contacts => {
-          this.contacts = contacts;
+        this.contactService.saveContact(result).subscribe(response => {
+          this.contactService.findContacts().subscribe(contacts => {
+            this.contacts = contacts;
+          });
         });
-        this.contacts = this.contactService.findContacts();
       }
     });
   }
 
   deleteContact(contact: Contact) {
-    this.contactService.deleteContact(contact);
-    this.contacts = this.contactService.findContacts();
+    this.contactService.deleteContact(contact).subscribe(response => {
+      this.contactService.findContacts().subscribe(contacts => {
+        this.contacts = contacts;
+      });
+    });
   }
 
   editContact(contact: Contact) {
     this.dialogService.editContactDialog(contact).subscribe(result => {
       if (result) {
-        console.log(this.contacts);
-        this.contactService.saveContactEdit(result);
-        this.contacts = this.contactService.findContacts();
-        console.log(this.contacts);
-      }
-    });
+        this.contactService.saveContact(result).subscribe(response => {
+          this.contactService.findContacts().subscribe(contacts => {
+            this.contacts = contacts;
+          });
+        });
+      }});
   }
 
   showContactMap(contact: Contact) {

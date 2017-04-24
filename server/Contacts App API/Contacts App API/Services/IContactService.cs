@@ -10,8 +10,8 @@ namespace Contacts_App_API.Services
     {
 		List<Contact> FindAllContacts();
 		Contact FindContactById(int id);
-		void CreateContact(Contact contact);
-		void UpdateContact(int id, Contact contact);
-		void DeleteContact(int id);
+		List<Contact> CreateContact(Contact contact);
+		List<Contact> UpdateContact(int id, Contact contact);
+		List<Contact> DeleteContact(int id);
 	}
 }

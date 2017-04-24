@@ -59,8 +59,8 @@ const routes = [
     FlexLayoutModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ContactService, DialogService, ContactLocalStorageService],
+  providers: [ContactService, DialogService, ContactLocalStorageService,ContactApiService],
   bootstrap: [AppComponent],
-  entryComponents: [ContactDialogComponent, EditContactDialogComponent, ContactMapDialogComponent, ContactApiService]
+  entryComponents: [ContactDialogComponent, EditContactDialogComponent, ContactMapDialogComponent]
 })
 export class AppModule {}
