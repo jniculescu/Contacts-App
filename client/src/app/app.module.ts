@@ -21,6 +21,7 @@ import { ContactsComponent } from './contact/contacts/contacts.component';
 import {LoginComponent} from "./login/login.component";
 import {ContactApiService} from "./contact/service/contact-api.service";
 import {ContactLocalStorageService} from "./contact/service/contact-localstorage.service";
+import { VibrateDirective } from './utils/vibrate.directive';
 
 const routes = [
   {
@@ -49,7 +50,8 @@ const routes = [
     ContactMapDialogComponent,
     ContactAddressPipe,
     ContactsComponent,
-    LoginComponent
+    LoginComponent,
+    VibrateDirective
   ],
   imports: [
     BrowserModule,
