@@ -5,16 +5,10 @@ import {Directive, HostListener} from '@angular/core';
 })
 export class VibrateDirective {
 
-  constructor() {
-/*    document.addEventListener("click", function () {
-
-    })*/
-  }
+  constructor() {}
 
   @HostListener('click', ['$event']) onClick(){
     console.log('Vibrating');
     navigator.vibrate(1000);
   }
-
 }
-//käytä host listener on clikc juttua täällä.....$event jne jne jne...
