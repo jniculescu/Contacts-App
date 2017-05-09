@@ -38,6 +38,8 @@ export class ContactLocalStorageService implements ContactStorage {
   }
 
   public createContact(contact: Contact){
+    var newId = this.contacts.length;
+    contact.id = newId + 1;
     this.contacts.push(contact);
     this.writeLocalStorageContacts(this.contacts);
     return Observable.of([]);
