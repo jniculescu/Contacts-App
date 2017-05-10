@@ -2,10 +2,12 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
+  background-color: #3f51b5;
 }
 
 .ca-logout{
   position: fixed;
   bottom: 20px;
   left: 20px;
+  background-color: #3f51b5;
 }

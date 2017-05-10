@@ -9,6 +9,6 @@ export class VibrateDirective {
 
   @HostListener('click', ['$event']) onClick(){
     console.log('Vibrating');
-    //navigator.vibrate(1000);
+    navigator.vibrate(250);
   }
 }

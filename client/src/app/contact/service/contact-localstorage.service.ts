@@ -53,10 +53,10 @@ export class ContactLocalStorageService implements ContactStorage {
   }
 
   public deleteContact(contact: Contact){
-     let index = this.contacts.findIndex(c => c.id == contact.id);
-     this.contacts.splice(index, 1);
-     this.writeLocalStorageContacts(this.contacts);
-     return Observable.of(null);
+    let index = this.contacts.findIndex(c => c.id == contact.id);
+    this.contacts.splice(index, 1);
+    this.writeLocalStorageContacts(this.contacts);
+    return Observable.of(null);
   }
 
 }

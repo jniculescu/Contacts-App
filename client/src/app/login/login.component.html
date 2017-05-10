@@ -1,6 +1,6 @@
-<div class="login-card" fxLayout="column" fxLayoutAlign="start center">
+<div class="login-card" fxLayoutAlign="center center">
   <md-card class="ca-card">
-    <div md-card-image class="card-head">
+    <div md-card-image class="card-head-login">
       <md-card-title>ContactsApp Login</md-card-title>
     </div>
     <div class="card-content">
@@ -14,7 +14,7 @@
         <input [(ngModel)]="password" type="text" name="passWord">
       </p>
       <md-card-actions>
-        <button md-raised-button (click)="navigateToContacts()">Login</button>
+        <button class="ca-login" md-raised-button (click)="navigateToContacts()">Login</button>
       </md-card-actions>
     </div>
   </md-card>
