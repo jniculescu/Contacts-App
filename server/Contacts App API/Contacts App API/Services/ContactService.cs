@@ -3,51 +3,44 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contacts_App_API.Model;
+using Contacts_App_API.Repository;
 
 namespace Contacts_App_API.Services
 {
 	public class ContactService : IContactService
 	{
-		public List<Contact> _contacts;
+		private readonly IContactRepository _contactRepository;
 
-		public ContactService()
+		public ContactService(IContactRepository contactRepository)
 		{
-			_contacts = new List<Contact>();
+			_contactRepository = contactRepository;
 		}
 
 		public List<Contact> FindAllContacts()
 		{
-			return _contacts;
+			return _contactRepository.FindAll();
 		}
 
 		public Contact FindContactById(int id)
 		{
-			return _contacts.FirstOrDefault(contact => contact.Id == id);
+			return _contactRepository.FindById(id);
 		}
 
-		private int GetId()
+		public void CreateContact(Contact contact)
 		{
-			var lastSaved = _contacts.OrderByDescending(contact => contact.Id).FirstOrDefault();
-			return lastSaved?.Id + 1 ?? 1;
+			_contactRepository.Create(contact);
 		}
 
-		public List<Contact> CreateContact(Contact contact)
+		public void UpdateContact(Contact contact)
 		{
-			_contacts.Add(new Contact(GetId(), contact.FirstName, contact.LastName, contact.PhoneNum, contact.Address, contact.City));
-			return _contacts;
+			_contactRepository.Update(contact);
+
 		}
 
-		public List<Contact> UpdateContact(int id, Contact contact)
+		public void DeleteContact(int id)
 		{
-			var index = _contacts.FindIndex(c => c.Id == id);
-			_contacts[index] = contact;
-			return _contacts;
-		}
+			_contactRepository.Delete(id);
 
-		public List<Contact> DeleteContact(int id)
-		{
-			_contacts.RemoveAll(c => c.Id == id);
-			return _contacts;
 		}
 
 	}

@@ -1,10 +1,13 @@
 ﻿
+using Contacts_App_API.Repository;
+using Contacts_App_API.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Contacts_App_API.Services;
+
 
 namespace Contacts_App_API
 {
@@ -25,8 +28,14 @@ namespace Contacts_App_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-			services.AddSingleton<IContactService, ContactService>();
+			services.AddDbContext<DatabaseContext>(options => {
+				options.UseSqlServer(Configuration.GetConnectionString("DatabaseConnection"));
+			});
 
+			services.AddSingleton<IContactService, ContactService>();
+			services.AddScoped<IContactRepository, ContactRepository>();
+			services.AddScoped<IUserRepository, UserRepository>();
+			services.AddSingleton<IUserService, UserService>();
 			services.AddCors(o => o.AddPolicy("DevPolicy", builder =>
 			{
 				builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
@@ -39,7 +48,11 @@ namespace Contacts_App_API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+			var context = app.ApplicationServices.GetService<DatabaseContext>();
+			if (context.Database.EnsureCreated())
+				context.Database.Migrate();
+
+			loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
 			app.UseCors("DevPolicy");

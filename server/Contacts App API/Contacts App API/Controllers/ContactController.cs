@@ -40,14 +40,14 @@ namespace Contacts_App_API.Controllers
         public List<Contact> Post([FromBody]Contact contact)
         {
 			_contactService.CreateContact(contact);
-			return _contacts; ;
+			return _contacts;
 		}
 
 		// PUT api/contacts/1
 		[HttpPut("{id}")]
         public List<Contact> Put(int id, [FromBody]Contact contact)
         {
-			_contactService.UpdateContact(id, contact);
+			_contactService.UpdateContact(contact);
 			return _contacts;
 		}
 
