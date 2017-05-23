@@ -3,13 +3,14 @@ import {Http} from "@angular/http";
 import {Contact} from "../contact";
 import {environment} from "../../../environments/environment";
 import {ContactStorage} from "./contact-storage";
+import {HttpService} from "./http.service";
 
 @Injectable()
 export class ContactApiService implements ContactStorage{
 
   url = environment.endpointUrl + 'contacts';
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpService) { }
 
   findContacts(){
     return this.http.get(this.url).map(response => {return response.json() as Contact[];});

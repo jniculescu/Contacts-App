@@ -4,6 +4,7 @@ import {ContactApiService} from "./contact-api.service";
 import {ContactStorage} from "./contact-storage";
 import {environment} from "../../../environments/environment";
 import {ContactLocalStorageService} from "./contact-localstorage.service";
+import {HttpService} from "./http.service";
 
 @Injectable()
 export class ContactService {
@@ -13,7 +14,7 @@ export class ContactService {
 
   constructor(private localStorage: ContactLocalStorageService, private contactApiService: ContactApiService) {
 
-    this.contactStorage = environment.endpointUrl ? contactApiService : localStorage;
+     this.contactStorage = environment.endpointUrl ? contactApiService : localStorage;
   }
 
   public findContacts() {
