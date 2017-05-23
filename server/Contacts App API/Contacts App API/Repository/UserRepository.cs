@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Contacts_App_API.Model;
+using Contacts_App_API.Services;
 
 namespace Contacts_App_API.Repository
 {

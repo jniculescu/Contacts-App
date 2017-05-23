@@ -5,12 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Contacts_App_API.Model;
 using Contacts_App_API.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Contacts_App_API.Controllers
 {
-    [Route("api/contacts")]
-    public class ContactsController : Controller
-    {
+	[Route("api/contacts")]
+	[Authorize("Bearer")]
+	public class ContactsController : Controller
+	{
 
 		private readonly IContactService _contactService;
 
@@ -23,40 +25,41 @@ namespace Contacts_App_API.Controllers
 
 		// GET api/contacts
 		[HttpGet]
-        public List<Contact> Get()
-        {
-				return _contactService.FindAllContacts();
-        }
+		public List<Contact> Get()
+		{
+			return _contactService.FindAllContacts();
+		}
 
 		// GET api/contacts/1
 		[HttpGet("{id}")]
-        public Contact Get(int id)
-        {
-            return _contactService.FindContactById(id);
+		public Contact Get(int id)
+		{
+			return _contactService.FindContactById(id);
 		}
 
 		// POST api/contacts
 		[HttpPost]
-        public List<Contact> Post([FromBody]Contact contact)
-        {
+		public List<Contact> Post([FromBody]Contact contact)
+		{
 			_contactService.CreateContact(contact);
 			return _contacts;
 		}
 
 		// PUT api/contacts/1
 		[HttpPut("{id}")]
-        public List<Contact> Put(int id, [FromBody]Contact contact)
-        {
+		public List<Contact> Put(int id, [FromBody]Contact contact)
+		{
 			_contactService.UpdateContact(contact);
 			return _contacts;
 		}
 
 		// DELETE api/contacts/1
 		[HttpDelete("{id}")]
-        public List<Contact> Delete(int id)
-        {
+		public List<Contact> Delete(int id)
+		{
 			_contactService.DeleteContact(id);
 			return _contacts;
 		}
-    }
+
+	}
 }
