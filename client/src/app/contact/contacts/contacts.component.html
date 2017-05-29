@@ -1,4 +1,4 @@
-<div fxLayout="column" fxLayoutAlign="start center">
+<div>
   <app-contact-list [contacts]="contacts"
                     (editContact)="editContact($event)"
                     (deleteContact)="deleteContact($event)"
@@ -6,5 +6,5 @@
   </app-contact-list>
 </div>
 
-<button caVibrate class="add-button" md-fab (click)="addContact()">New</button>
-<button md-fab class="ca-logout" (click)="navigateToLogin()">LogOut</button>
+<button caVibrate class="add-button" md-icon-button (click)="addContact()"><md-icon>add</md-icon></button>
+<button md-icon-button class="ca-logout" (click)="navigateToLogin()"><md-icon>undo</md-icon></button>

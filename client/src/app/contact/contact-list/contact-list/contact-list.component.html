@@ -1,9 +1,11 @@
-<div *ngFor="let contact of contacts" class="list-card">
-  <div class="contact-card">
-    <app-contact-list-item [contact]="contact"
-                           [edit]="editContact"
-                           [delete]="deleteContact"
-                           [map]="showContactMap">
-    </app-contact-list-item>
+<div fxLayout="row" fxLayoutWrap fxLayoutAlign="center" >
+  <div *ngFor="let contact of contacts" class="list-card">
+    <div class="contact-card">
+      <app-contact-list-item [contact]="contact"
+                             [edit]="editContact"
+                             [delete]="deleteContact"
+                             [map]="showContactMap">
+      </app-contact-list-item>
+    </div>
   </div>
 </div>
