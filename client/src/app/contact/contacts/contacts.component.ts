@@ -3,6 +3,7 @@ import {Contact} from "../../contact/contact";
 import {ContactService} from "../../contact/service/contact.service";
 import {DialogService} from "../../contact/service/dialog.service";
 import {Router} from "@angular/router";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-contacts',
@@ -15,7 +16,7 @@ export class ContactsComponent {
   contacts: Contact[];
   private dialogService: any;
 
-  constructor(public contactService: ContactService, dialogService: DialogService, private router: Router) {
+  constructor(public contactService: ContactService, dialogService: DialogService, private router: Router, private app: AppComponent) {
     contactService.findContacts().subscribe(contacts => {
       this.contacts = contacts;
     });
@@ -58,6 +59,7 @@ export class ContactsComponent {
   }
 
   navigateToLogin() {
+    this.app.user = [];
     this.router.navigate(['/login']);
   }
 
