@@ -4,9 +4,9 @@
 }
 
 .card-head-login {
-  background: #3f51b5;
-  padding-top: 5px;
-  padding-bottom: 2px;
+  background: url("/../../assets/images/blue-background.jpg");
+  padding-top: 0px;
+  padding-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;
   color: white;
@@ -14,6 +14,7 @@
 
 .ca-card {
   background: white;
+  padding-bottom: 0px;
 }
 
 .ca-login{
